@@ -1,0 +1,927 @@
+/* ==========================================================================
+   HAASINI'S BIRTHDAY SCRAPBOOK — page sections
+   Hero · letter · gallery · friends · closing · footer
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   A. Opening
+   -------------------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding-block: clamp(3.5rem, 8vh, 5.5rem) clamp(2.75rem, 7vh, 4.5rem);
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    620px 420px at 78% 42%,
+    rgba(255, 255, 255, 0.9),
+    rgba(255, 255, 255, 0) 70%
+  );
+}
+
+.hero__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+  align-items: center;
+  gap: clamp(1rem, 4vw, 3.5rem);
+}
+
+.hero__copy {
+  padding-block: clamp(0.5rem, 2vh, 1.5rem);
+}
+
+.hero__title {
+  display: grid;
+  gap: 0.18em;
+  margin-block: clamp(1rem, 2.6vw, 1.6rem) 0;
+}
+
+.hero__title-pre {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.5vw, 2.55rem);
+  line-height: 1.1;
+  letter-spacing: 0;
+  color: var(--maroon);
+}
+
+.hero__name {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.06em;
+  font-family: var(--serif);
+  font-size: clamp(3.3rem, 8.2vw, 6.3rem);
+  line-height: 0.9;
+  letter-spacing: -0.025em;
+  color: var(--burgundy);
+}
+
+.hero__name .svg-inline {
+  margin-top: 0.1em;
+}
+
+.hero__heart {
+  width: 0.2em;
+  height: 0.2em;
+  fill: var(--maroon);
+  flex: none;
+}
+
+.hero__support {
+  max-width: 34ch;
+  margin-top: clamp(1.15rem, 2.6vw, 1.75rem);
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  line-height: 1.7;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(1rem, 2.4vw, 1.6rem);
+  margin-top: clamp(1.75rem, 4vw, 2.6rem);
+}
+
+.hero__note {
+  font-family: var(--hand);
+  font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+  color: var(--ink-faint);
+  transform: rotate(-1.6deg);
+}
+
+.hero__scene {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: clamp(280px, 44vh, 430px);
+}
+
+.hero__scene-inner {
+  position: relative;
+  display: grid;
+  place-items: end center;
+  width: 100%;
+  padding-bottom: clamp(1.5rem, 4vh, 2.5rem);
+}
+
+.hero__snowman {
+  position: relative;
+  z-index: 1;
+  width: clamp(9.5rem, 19vw, 14.5rem);
+  filter: drop-shadow(0 22px 22px rgba(74, 20, 38, 0.1));
+}
+
+.hero__mound {
+  position: absolute;
+  bottom: clamp(0.4rem, 2vh, 1.4rem);
+  left: 50%;
+  width: min(24rem, 108%);
+  height: 4.25rem;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    #ffffff 40%,
+    rgba(255, 255, 255, 0.55) 72%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  filter: blur(0.5px);
+}
+
+.hero__flake {
+  position: absolute;
+  color: var(--maroon);
+  opacity: 0.42;
+  animation: flake-float 9s ease-in-out infinite;
+}
+
+.hero__flake svg {
+  width: 100%;
+  height: auto;
+}
+
+.hero__flake--a {
+  top: 12%;
+  left: 8%;
+  width: 1.1rem;
+  animation-delay: -1.5s;
+}
+
+.hero__flake--b {
+  top: 30%;
+  right: 2%;
+  width: 0.8rem;
+  opacity: 0.32;
+  animation-delay: -4s;
+}
+
+.hero__flake--c {
+  bottom: 24%;
+  left: 2%;
+  width: 0.7rem;
+  opacity: 0.3;
+  animation-delay: -6.5s;
+}
+
+@keyframes flake-float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(18deg);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   B. The letter
+   -------------------------------------------------------------------------- */
+
+.letter {
+  background: linear-gradient(
+    180deg,
+    rgba(242, 221, 225, 0) 0%,
+    rgba(242, 221, 225, 0.42) 16%,
+    rgba(242, 221, 225, 0.42) 84%,
+    rgba(242, 221, 225, 0) 100%
+  );
+  scroll-margin-top: 1rem;
+}
+
+.letter__inner {
+  position: relative;
+  max-width: 54rem;
+  margin-inline: auto;
+}
+
+.letter__head {
+  margin-bottom: clamp(2rem, 5vw, 3rem);
+}
+
+.letter__paper {
+  position: relative;
+  padding: clamp(1.9rem, 5.5vw, 4.5rem) clamp(1.5rem, 5.5vw, 4.5rem)
+    clamp(2.2rem, 6vw, 4.75rem);
+}
+
+.letter__greeting {
+  font-family: var(--hand);
+  font-size: clamp(1.85rem, 3.6vw, 2.7rem);
+  line-height: 1.1;
+  color: var(--burgundy);
+  margin-bottom: clamp(1rem, 2.6vw, 1.5rem);
+}
+
+.letter__body {
+  display: grid;
+  gap: 1.1rem;
+  max-width: 62ch;
+  font-family: var(--serif);
+  font-size: clamp(1.14rem, 1.85vw, 1.3rem);
+  line-height: 1.86;
+  color: var(--ink);
+}
+
+.letter__signoff {
+  margin-top: clamp(1.85rem, 4vw, 2.6rem);
+  padding-top: 1.15rem;
+  font-family: var(--hand);
+  font-size: clamp(1.7rem, 3vw, 2.15rem);
+  line-height: 1.1;
+  color: var(--burgundy);
+  text-align: right;
+}
+
+.letter__signoff::before {
+  content: "";
+  display: block;
+  width: clamp(3.5rem, 8vw, 5rem);
+  height: 1px;
+  margin: 0 0 1rem auto;
+  background: var(--line);
+}
+
+.letter__seal {
+  position: absolute;
+  right: clamp(1.3rem, 3vw, 2.6rem);
+  bottom: -1.15rem;
+  width: clamp(2.5rem, 4vw, 3.15rem);
+  height: clamp(2.5rem, 4vw, 3.15rem);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: radial-gradient(circle at 34% 28%, #8c2b45, var(--wine) 70%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.22),
+    0 8px 16px -10px rgba(74, 20, 38, 0.9);
+  transform: rotate(-8deg);
+}
+
+.letter__seal .svg-inline {
+  display: flex;
+  width: 42%;
+  height: 42%;
+}
+
+.letter__seal svg {
+  width: 100%;
+  height: 100%;
+  fill: rgba(255, 249, 242, 0.85);
+}
+
+.letter__deco {
+  position: absolute;
+  color: var(--maroon);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.letter__deco svg {
+  width: 100%;
+  height: auto;
+}
+
+.letter__deco--tl {
+  top: -1.4rem;
+  left: -1rem;
+  width: 2.2rem;
+  transform: rotate(-12deg);
+}
+
+.letter__deco--br {
+  right: -1.2rem;
+  bottom: 3.5rem;
+  width: 1.7rem;
+  transform: rotate(14deg);
+}
+
+/* --------------------------------------------------------------------------
+   C. Memory gallery
+   -------------------------------------------------------------------------- */
+
+.gallery__grid {
+  columns: 3;
+  column-gap: clamp(1rem, 2.6vw, 2.4rem);
+}
+
+.polaroid-slot {
+  display: block;
+  break-inside: avoid;
+  margin-bottom: clamp(1.6rem, 3.4vw, 3rem);
+}
+
+.gallery__grid .polaroid-slot:nth-child(5n + 2) .polaroid {
+  width: 92%;
+  margin-inline-start: auto;
+}
+
+.gallery__grid .polaroid-slot:nth-child(4n + 3) .polaroid {
+  width: 88%;
+}
+
+.gallery__grid .polaroid-slot:nth-child(7n + 6) .polaroid {
+  width: 95%;
+  margin-inline-start: auto;
+}
+
+.gallery__foot {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.gallery__hint {
+  font-family: var(--hand);
+  font-size: clamp(1.1rem, 1.7vw, 1.35rem);
+  color: var(--ink-faint);
+}
+/* --------------------------------------------------------------------------
+   D. The wall — everyone's photos in one pile
+
+   There are no per-person sections. Each person's note is set as the caption on
+   one of their photos, and every other photo of theirs is just another picture
+   in the same wall, scattered in a fixed-but-arbitrary order. A friend who sent
+   fourteen photos and one who sent one end up looking like the same habit.
+   -------------------------------------------------------------------------- */
+
+.friends {
+  position: relative;
+  padding-top: clamp(2rem, 6vw, 3.5rem);
+}
+
+.friends::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--line) 18%,
+    var(--line) 82%,
+    transparent
+  );
+}
+
+.wall {
+  columns: 3;
+  column-gap: clamp(1rem, 2.6vw, 2.2rem);
+  margin-top: clamp(1.75rem, 4vw, 3rem);
+}
+
+.wall > * {
+  break-inside: avoid;
+  margin-bottom: clamp(1.4rem, 3.2vw, 2.4rem);
+}
+
+.wall__photo .polaroid,
+.wall__note .polaroid {
+  width: 100%;
+}
+
+/* Ragged widths, so no two rows line up like a table. */
+.wall__photo:nth-child(3n + 1) .polaroid {
+  width: 95%;
+}
+
+.wall__photo:nth-child(3n + 2) .polaroid {
+  width: 86%;
+  margin-inline-start: auto;
+}
+
+/* The note, written on the paper slip tucked under its photo. */
+.wall__note .polaroid {
+  width: 94%;
+}
+
+.wall__caption {
+  width: min(100%, 22rem);
+  margin: -0.4rem auto 0;
+  padding: 1.15rem 1.3rem 1.3rem;
+  transform: rotate(0.6deg);
+}
+
+.wall__note:nth-child(even) .wall__caption {
+  transform: rotate(-0.7deg);
+}
+
+.wall__caption-label {
+  font-family: var(--sans);
+  font-size: 0.56rem;
+  font-weight: 600;
+  letter-spacing: 0.19em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.wall__name {
+  display: flex;
+  align-items: center;
+  gap: 0.14em;
+  margin: 0.15rem 0 0.65rem;
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 1.9vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--burgundy);
+}
+
+.wall__heart {
+  width: 0.34em;
+  height: 0.34em;
+  fill: var(--maroon);
+  flex: none;
+  margin-top: 0.12em;
+}
+
+.wall__caption .note__body {
+  gap: 0.62rem;
+  font-size: clamp(1.04rem, 1.05vw, 1.06rem);
+  line-height: 1.68;
+}
+
+/* --------------------------------------------------------------------------
+   D2. Video messages — one Polaroid each, name written in the chin
+   -------------------------------------------------------------------------- */
+
+.videos {
+  position: relative;
+  padding-top: clamp(2rem, 6vw, 3.5rem);
+}
+
+.videos::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--line) 18%,
+    var(--line) 82%,
+    transparent
+  );
+}
+
+.video-wall {
+  columns: 3;
+  column-gap: clamp(1.1rem, 2.6vw, 2.2rem);
+  margin-top: clamp(1.75rem, 4vw, 3rem);
+}
+
+.video-wall > .video-polaroid {
+  break-inside: avoid;
+  margin-bottom: clamp(1.5rem, 3.4vw, 2.6rem);
+  width: 100%;
+}
+
+.video-polaroid__window {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #1c0d12;
+  box-shadow: inset 0 0 0 1px rgba(74, 20, 38, 0.35);
+}
+
+.video-polaroid__media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #1c0d12;
+}
+
+/* A handwritten nudge until she presses play, then out of the way. */
+.video-polaroid__hint {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 0.5rem 0.75rem 0.65rem;
+  font-family: var(--hand);
+  font-size: 1.05rem;
+  line-height: 1;
+  color: #fff5ef;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(20, 8, 12, 0) 0%, rgba(20, 8, 12, 0.62) 100%);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.35s var(--ease);
+}
+
+.video-polaroid.is-playing .video-polaroid__hint {
+  opacity: 0;
+}
+
+.video-polaroid__name {
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 1.1;
+  padding-top: 0.1rem;
+}
+
+@media (max-width: 1000px) {
+  .video-wall {
+    columns: 2;
+  }
+}
+
+@media (max-width: 620px) {
+  .video-wall {
+    columns: 1;
+  }
+
+  .video-polaroid__name {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .wall {
+    columns: 2;
+  }
+}
+
+@media (max-width: 620px) {
+  .wall {
+    columns: 1;
+  }
+
+  .wall__photo:nth-child(3n + 2) .polaroid {
+    width: 92%;
+  }
+
+  .wall__caption {
+    width: min(100%, 24rem);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   F. Closing
+   -------------------------------------------------------------------------- */
+
+.closing {
+  position: relative;
+  padding-block: clamp(4rem, 9vw, 7rem) clamp(3rem, 7vw, 5rem);
+  background: linear-gradient(
+    180deg,
+    rgba(242, 221, 225, 0) 0%,
+    rgba(242, 221, 225, 0.5) 38%,
+    rgba(242, 221, 225, 0.85) 100%
+  );
+  overflow: hidden;
+}
+
+.closing__inner {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+
+.closing__heading {
+  font-size: clamp(2.05rem, 4.5vw, 3.4rem);
+  max-width: 22ch;
+}
+
+.closing__support {
+  margin-top: clamp(0.9rem, 2vw, 1.35rem);
+  font-family: var(--hand);
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+  line-height: 1.25;
+  color: var(--maroon);
+}
+
+.closing__message {
+  margin-top: clamp(1.6rem, 4vw, 2.4rem);
+  max-width: 54ch;
+  font-family: var(--serif);
+  font-size: clamp(1.13rem, 1.8vw, 1.32rem);
+  line-height: 1.86;
+  color: var(--ink);
+}
+
+.closing__scene {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  margin-top: clamp(2rem, 5vw, 3.25rem);
+  padding-bottom: clamp(1rem, 3vw, 2rem);
+}
+
+.closing__mound {
+  position: absolute;
+  bottom: 0.25rem;
+  left: 50%;
+  width: min(26rem, 92%);
+  height: 5rem;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 255, 255, 0.95) 38%,
+    rgba(255, 255, 255, 0.45) 74%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+.closing__snowman {
+  position: relative;
+  display: block;
+  z-index: 1;
+  width: clamp(11rem, 22vw, 15.5rem);
+  margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.closing__sign {
+  margin-top: clamp(1.75rem, 4vw, 2.5rem);
+  font-family: var(--hand);
+  font-size: clamp(1.45rem, 2.6vw, 1.9rem);
+  color: var(--burgundy);
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+
+.footer {
+  position: relative;
+  padding-block: clamp(2.6rem, 6vw, 3.75rem);
+  background: var(--wine);
+  background-image: radial-gradient(
+      120% 140% at 50% -30%,
+      rgba(135, 59, 80, 0.55),
+      rgba(74, 20, 38, 0) 62%
+    ),
+    radial-gradient(
+      60% 90% at 90% 120%,
+      rgba(109, 31, 53, 0.9),
+      rgba(74, 20, 38, 0) 70%
+    );
+  color: rgba(255, 249, 242, 0.7);
+  overflow: hidden;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(242, 221, 225, 0.55),
+    transparent
+  );
+}
+
+.footer__inner {
+  display: grid;
+  justify-items: center;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.footer__heart {
+  width: 0.72rem;
+  height: 0.72rem;
+  fill: rgba(242, 221, 225, 0.8);
+}
+
+.footer__note {
+  font-family: var(--hand);
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  line-height: 1.35;
+  color: var(--blush);
+  max-width: 30ch;
+}
+
+.footer__meta {
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 249, 242, 0.58);
+}
+
+.footer__credit {
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  color: rgba(255, 249, 242, 0.42);
+}
+
+.footer__credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.footer__credit a:hover {
+  color: rgba(255, 249, 242, 0.72);
+}
+
+.footer__flake {
+  position: absolute;
+  color: rgba(242, 221, 225, 0.22);
+  pointer-events: none;
+}
+
+.footer__flake svg {
+  width: 100%;
+  height: auto;
+}
+
+.footer__flake--a {
+  top: 1.5rem;
+  left: 8%;
+  width: 1.2rem;
+}
+
+.footer__flake--b {
+  bottom: 1.75rem;
+  right: 12%;
+  width: 0.85rem;
+}
+
+.footer__flake--c {
+  top: 45%;
+  right: 4%;
+  width: 0.65rem;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 980px) {
+  .hero {
+    min-height: auto;
+    padding-block: clamp(3rem, 8vw, 4.5rem) clamp(3rem, 8vw, 4rem);
+  }
+
+  .hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    text-align: center;
+    gap: clamp(1.5rem, 5vw, 2.5rem);
+  }
+
+  .hero__scene {
+    order: -1;
+    min-height: 0;
+    width: min(13rem, 46vw);
+  }
+
+  .hero__scene-inner {
+    padding-bottom: 1rem;
+  }
+
+  .hero__mound {
+    height: 2.75rem;
+    bottom: 0.25rem;
+  }
+
+  .hero__copy {
+    display: grid;
+    justify-items: center;
+  }
+
+  .eyebrow {
+    justify-content: center;
+  }
+
+  .hero__title {
+    justify-items: center;
+  }
+
+  .hero__support {
+    max-width: 40ch;
+  }
+
+  .hero__actions {
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .hero__note {
+    transform: rotate(-1deg);
+  }
+
+  .gallery__grid {
+    columns: 2;
+  }
+
+  .letter__deco {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .section-head {
+    margin-bottom: clamp(2rem, 7vw, 2.75rem);
+  }
+
+  .hero .eyebrow {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+  }
+
+  .hero__name {
+    font-size: clamp(3rem, 12vw, 4.4rem);
+  }
+
+  .hero__title-pre {
+    font-size: clamp(1.5rem, 5.4vw, 2rem);
+  }
+
+  .btn {
+    width: 100%;
+    max-width: 22rem;
+  }
+
+  .note__quote {
+    font-size: 3.4rem;
+  }
+
+  .note__sign {
+    font-size: 1.45rem;
+  }
+
+  .letter__paper {
+    padding-inline: 1.35rem;
+  }
+
+  .letter__seal {
+    right: 1.2rem;
+    bottom: -1rem;
+  }
+
+  .lightbox__close {
+    top: -0.25rem;
+    right: -0.25rem;
+  }
+
+  .lightbox__frame {
+    padding: 0.5rem 0.5rem 0;
+    max-height: 68vh;
+  }
+
+  .lightbox__img {
+    max-height: calc(68vh - 1rem);
+  }
+
+  .lightbox__arrow {
+    width: 2.6rem;
+    height: 2.6rem;
+  }
+}
+
+@media (max-width: 520px) {
+  :root {
+    --section-pad: 3.5rem;
+  }
+
+  .gallery__grid {
+    columns: 1;
+  }
+
+  .gallery__grid .polaroid-slot .polaroid,
+  .gallery__grid .polaroid-slot:nth-child(5n + 2) .polaroid,
+  .gallery__grid .polaroid-slot:nth-child(4n + 3) .polaroid,
+  .gallery__grid .polaroid-slot:nth-child(7n + 6) .polaroid {
+    width: 94%;
+    margin-inline: auto;
+  }
+
+  .letter__body {
+    font-size: 1.08rem;
+    line-height: 1.8;
+  }
+
+  .closing__message {
+    font-size: 1.06rem;
+  }
+
+  .snowman-btn {
+    width: min(220px, 74vw);
+  }
+
+  .footer__note {
+    max-width: 26ch;
+  }
+}

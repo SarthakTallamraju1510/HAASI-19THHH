@@ -1,0 +1,12 @@
+{
+  "name": "haasini-birthday-scrapbook",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A little burgundy-and-ivory winter scrapbook, made for Haasini's birthday.",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "dev": "node scripts/serve.mjs",
+    "check": "node scripts/check-assets.mjs"
+  }
+}

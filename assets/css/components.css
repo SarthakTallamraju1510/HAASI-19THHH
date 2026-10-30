@@ -1,0 +1,883 @@
+/* ==========================================================================
+   HAASINI'S BIRTHDAY SCRAPBOOK — components
+   Buttons · paper · polaroids · video frames · lightbox · snowmen · dividers
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 50px;
+  padding: 1.05rem 1.85rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.4s var(--ease), box-shadow 0.4s var(--ease),
+    transform 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+.btn--primary {
+  background: var(--burgundy);
+  color: var(--ivory);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 16px 28px -18px rgba(74, 20, 38, 0.9);
+}
+
+.btn--primary:hover {
+  background: var(--wine);
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16),
+    0 22px 34px -18px rgba(74, 20, 38, 0.85);
+}
+
+.btn__heart {
+  width: 0.85rem;
+  height: 0.85rem;
+  fill: var(--blush);
+  transition: transform 0.5s var(--ease);
+}
+
+.btn:hover .btn__heart {
+  transform: scale(1.18);
+}
+
+/* --------------------------------------------------------------------------
+   Paper — letters, notes, the "pages" of the scrapbook
+   -------------------------------------------------------------------------- */
+
+.paper {
+  position: relative;
+  background-color: var(--paper);
+  background-image: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 252, 247, 0) 40%
+    ),
+    var(--grain);
+  background-size: auto, 200px 200px;
+  border: 1px solid var(--line-soft);
+  border-radius: 6px;
+  box-shadow: var(--shadow-md);
+  padding: clamp(1.75rem, 5vw, 4.25rem);
+}
+
+/* Keeps the paper edge feeling cut rather than machine-perfect. */
+.paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7),
+    inset 0 -18px 30px -22px rgba(74, 20, 38, 0.18);
+}
+
+.note {
+  padding: clamp(1.6rem, 3.6vw, 2.9rem) clamp(1.5rem, 3.6vw, 3rem);
+}
+
+.note__quote {
+  font-family: var(--serif);
+  font-size: 4.5rem;
+  line-height: 0.7;
+  color: var(--blush);
+  display: block;
+  margin-bottom: 0.35rem;
+  user-select: none;
+}
+
+.note__body {
+  display: grid;
+  gap: 0.95rem;
+  font-family: var(--serif);
+  font-size: clamp(1.12rem, 1.5vw, 1.28rem);
+  line-height: 1.78;
+  color: var(--ink);
+}
+
+.note__sign {
+  margin-top: 1.4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-soft);
+  font-family: var(--hand);
+  font-size: 1.6rem;
+  line-height: 1.2;
+  color: var(--burgundy);
+}
+
+/* --------------------------------------------------------------------------
+   Polaroids
+   -------------------------------------------------------------------------- */
+
+.polaroid {
+  --rot: 0deg;
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0.72rem 0.72rem 0;
+  background: linear-gradient(178deg, #fffefb 12%, #fffaf3 100%);
+  border-radius: 3px;
+  box-shadow: 0 1px 1px rgba(51, 39, 42, 0.09),
+    0 12px 20px -14px rgba(74, 20, 38, 0.45),
+    0 30px 48px -34px rgba(74, 20, 38, 0.55);
+  transform: rotate(var(--rot));
+  transition: transform 0.55s var(--ease), box-shadow 0.55s var(--ease);
+}
+
+/* Paper tooth on the frame itself */
+.polaroid::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background-image: var(--grain);
+  background-size: 150px 150px;
+  opacity: 0.28;
+  mix-blend-mode: multiply;
+}
+
+.polaroid__tape {
+  position: absolute;
+  top: -0.72rem;
+  left: 50%;
+  z-index: 2;
+  width: clamp(3.4rem, 32%, 5.2rem);
+  height: 1.35rem;
+  transform: translateX(-50%) rotate(-2.6deg);
+  background: linear-gradient(
+    100deg,
+    rgba(255, 255, 255, 0.72),
+    rgba(242, 221, 225, 0.78)
+  );
+  border-left: 1px dashed rgba(255, 255, 255, 0.75);
+  border-right: 1px dashed rgba(255, 255, 255, 0.75);
+  box-shadow: 0 1px 2px rgba(74, 20, 38, 0.12);
+  opacity: 0.92;
+  pointer-events: none;
+}
+
+.polaroid__button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border-radius: 1px;
+  cursor: zoom-in;
+}
+
+.polaroid__button:focus-visible {
+  outline-offset: 5px;
+}
+
+.polaroid__window {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--paper-edge);
+  box-shadow: inset 0 0 0 1px rgba(51, 39, 42, 0.08),
+    inset 0 3px 12px rgba(51, 39, 42, 0.13);
+}
+
+.polaroid__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s var(--ease), filter 0.6s var(--ease);
+}
+
+.polaroid__zoom {
+  position: absolute;
+  right: 0.55rem;
+  bottom: 0.55rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(74, 20, 38, 0.72);
+  color: var(--ivory);
+  opacity: 0;
+  transform: translateY(0.35rem);
+  transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.polaroid__zoom svg {
+  width: 0.9rem;
+  height: 0.9rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+
+.polaroid__caption {
+  display: block;
+  padding: 0.7rem 0.35rem 0.95rem;
+  font-family: var(--hand);
+  font-size: clamp(1.05rem, 1.4vw, 1.24rem);
+  line-height: 1.2;
+  text-align: center;
+  color: #5f4b50;
+  transition: color 0.4s var(--ease);
+}
+
+@media (hover: hover) {
+  .polaroid:hover,
+  .polaroid:focus-within {
+    transform: rotate(calc(var(--rot) * 0.32)) translateY(-8px) scale(1.012);
+    box-shadow: 0 2px 3px rgba(51, 39, 42, 0.08),
+      0 22px 32px -18px rgba(74, 20, 38, 0.5),
+      0 44px 64px -40px rgba(74, 20, 38, 0.6);
+  }
+
+  .polaroid:hover .polaroid__img,
+  .polaroid:focus-within .polaroid__img {
+    transform: scale(1.035);
+  }
+
+  .polaroid:hover .polaroid__zoom,
+  .polaroid:focus-within .polaroid__zoom {
+    opacity: 1;
+    transform: none;
+  }
+
+  .polaroid:hover .polaroid__caption,
+  .polaroid:focus-within .polaroid__caption {
+    color: var(--burgundy);
+  }
+}
+
+/* Touch: the tap itself opens the lightbox, so give an active-state lift. */
+.polaroid:active {
+  transform: rotate(calc(var(--rot) * 0.5)) translateY(-3px);
+}
+
+/* --------------------------------------------------------------------------
+   Snowmen
+   -------------------------------------------------------------------------- */
+
+.snowman {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.snowman__wave {
+  transform-box: fill-box;
+  transform-origin: 100% 100%;
+  animation: snowman-wave 5.5s ease-in-out infinite;
+}
+
+.snowman__blink {
+  animation: snowman-blink 7s steps(1, end) infinite;
+}
+
+@keyframes snowman-wave {
+  0%,
+  72%,
+  100% {
+    transform: rotate(0deg);
+  }
+  80% {
+    transform: rotate(-7deg);
+  }
+  90% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes snowman-blink {
+  0%,
+  91%,
+  100% {
+    opacity: 1;
+  }
+  93%,
+  95% {
+    opacity: 0.1;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Little interludes between scrapbook pages
+   -------------------------------------------------------------------------- */
+
+.interlude {
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  padding-block: clamp(2.5rem, 5.5vw, 4rem);
+  text-align: center;
+}
+
+.interlude__rule {
+  width: min(300px, 62vw);
+  height: 1px;
+  margin-bottom: clamp(1.5rem, 3.5vw, 2.25rem);
+  background: repeating-linear-gradient(
+    90deg,
+    var(--line) 0 3px,
+    transparent 3px 9px
+  );
+}
+
+.interlude__snowmen {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(0.1rem, 1vw, 0.6rem);
+  width: min(190px, 56vw);
+}
+
+.interlude__snowman {
+  flex: 1 1 0;
+  max-width: 5.25rem;
+}
+
+.interlude__snowman--small {
+  max-width: 4rem;
+  opacity: 0.85;
+  transform: scaleX(-1);
+}
+
+.interlude__snowman .snowman {
+  width: 100%;
+}
+
+.interlude__caption {
+  font-family: var(--hand);
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  color: var(--ink-faint);
+  margin-top: 0.35rem;
+}
+
+/* --------------------------------------------------------------------------
+   Lightbox
+   -------------------------------------------------------------------------- */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: clamp(0.75rem, 3vw, 2.5rem);
+  opacity: 0;
+  transition: opacity 0.32s var(--ease);
+}
+
+.lightbox[hidden] {
+  display: none;
+}
+
+.lightbox.is-open {
+  opacity: 1;
+}
+
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(43, 18, 26, 0.82);
+  backdrop-filter: blur(4px);
+}
+
+.lightbox__panel {
+  position: relative;
+  z-index: 1;
+  width: min(1040px, 100%);
+  max-height: 100%;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  gap: clamp(0.6rem, 2vw, 1.1rem);
+  transform: translateY(14px) scale(0.985);
+  transition: transform 0.42s var(--ease);
+}
+
+.lightbox.is-open .lightbox__panel {
+  transform: none;
+}
+
+.lightbox__figure {
+  display: grid;
+  gap: 0.75rem;
+  min-height: 0;
+  justify-items: center;
+}
+
+.lightbox__frame {
+  padding: 0.7rem 0.7rem 0;
+  background: var(--paper);
+  border-radius: 3px;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.6);
+  max-height: min(74vh, 780px);
+}
+
+.lightbox__img {
+  width: auto;
+  height: auto;
+  max-width: min(100%, 900px);
+  max-height: min(calc(74vh - 1.4rem), 760px);
+  object-fit: contain;
+  background: var(--paper-edge);
+}
+
+.lightbox__caption {
+  font-family: var(--hand);
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  line-height: 1.3;
+  color: var(--blush);
+  text-align: center;
+  max-width: 46ch;
+  min-height: 1.3em;
+}
+
+.lightbox__bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.75rem, 3vw, 1.6rem);
+}
+
+.lightbox__count {
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  color: rgba(255, 249, 242, 0.72);
+  min-width: 4.5ch;
+  text-align: center;
+}
+
+.lightbox__arrow,
+.lightbox__close {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--ivory);
+  background: rgba(255, 249, 242, 0.1);
+  border: 1px solid rgba(255, 249, 242, 0.26);
+  transition: background-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.lightbox__arrow {
+  width: 2.85rem;
+  height: 2.85rem;
+}
+
+.lightbox__arrow svg {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lightbox__arrow:hover,
+.lightbox__close:hover {
+  background: rgba(255, 249, 242, 0.2);
+}
+
+.lightbox__arrow:focus-visible,
+.lightbox__close:focus-visible {
+  outline-color: var(--blush);
+}
+
+.lightbox__close {
+  position: absolute;
+  top: -0.4rem;
+  right: -0.4rem;
+  z-index: 2;
+  width: 2.6rem;
+  height: 2.6rem;
+  background: rgba(74, 20, 38, 0.9);
+  border-color: rgba(255, 249, 242, 0.22);
+}
+
+.lightbox__close svg {
+  width: 0.85rem;
+  height: 0.85rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+/* --------------------------------------------------------------------------
+   Back to top
+   -------------------------------------------------------------------------- */
+
+.to-top {
+  position: fixed;
+  right: clamp(0.9rem, 3vw, 1.6rem);
+  bottom: clamp(0.9rem, 3vw, 1.6rem);
+  z-index: 60;
+  width: 2.9rem;
+  height: 2.9rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--burgundy);
+  color: var(--ivory);
+  box-shadow: 0 14px 26px -14px rgba(74, 20, 38, 0.9);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.35s var(--ease), transform 0.35s var(--ease),
+    background-color 0.3s var(--ease), visibility 0.35s;
+}
+
+.to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.to-top:hover {
+  background: var(--wine);
+}
+
+.to-top svg {
+  width: 0.95rem;
+  height: 0.95rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* --------------------------------------------------------------------------
+   The hidden note
+   -------------------------------------------------------------------------- */
+
+.snowman-btn {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.4rem;
+  width: min(260px, 70vw);
+  padding: 0.5rem;
+  border-radius: 20px;
+  transition: transform 0.4s var(--ease);
+}
+
+.snowman-btn:hover {
+  transform: translateY(-4px);
+}
+
+.snowman-btn__hint {
+  font-family: var(--hand);
+  font-size: clamp(1.15rem, 1.7vw, 1.4rem);
+  color: var(--maroon);
+  border-bottom: 1px dashed rgba(109, 31, 53, 0.32);
+  padding-bottom: 0.15rem;
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+
+.snowman-btn:hover .snowman-btn__hint {
+  color: var(--burgundy);
+  border-color: var(--burgundy);
+}
+
+.surprise {
+  width: min(34rem, 100%);
+  margin-top: 1.5rem;
+  padding: clamp(1.5rem, 4vw, 2.25rem) clamp(1.5rem, 4vw, 2.5rem);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(12px) scale(0.99);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+.surprise.is-open {
+  opacity: 1;
+  transform: none;
+}
+
+.surprise[hidden] {
+  display: none;
+}
+
+.surprise__label {
+  font-family: var(--hand);
+  font-size: 1.35rem;
+  color: var(--maroon);
+  margin-bottom: 0.65rem;
+}
+
+.surprise__body {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 1.6vw, 1.25rem);
+  line-height: 1.72;
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   Our song — the card on the opening screen, and the player that follows her
+   -------------------------------------------------------------------------- */
+
+.hero__song {
+  justify-self: stretch;
+  display: grid;
+  justify-items: center;
+  margin-top: clamp(1.4rem, 3.4vw, 2rem);
+}
+
+.song-card {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  width: min(25rem, 100%);
+  padding: 0.7rem 0.8rem 0.75rem 0.75rem;
+  text-align: left;
+}
+
+.song-card__disc,
+.music-dock__disc {
+  position: relative;
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: radial-gradient(
+      circle at 50% 50%,
+      var(--paper) 0 7%,
+      var(--blush) 8% 19%,
+      var(--burgundy) 20% 28%,
+      transparent 29%
+    ),
+    repeating-radial-gradient(
+      circle at 50% 50%,
+      #43101f 0 1px,
+      #54182a 2px 4px
+    );
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 2px 6px -2px rgba(74, 20, 38, 0.5);
+}
+
+.song-card__disc::after,
+.music-dock__disc::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    118deg,
+    rgba(255, 255, 255, 0.26) 0 20%,
+    rgba(255, 255, 255, 0) 45%
+  );
+  pointer-events: none;
+}
+
+.song-card__text {
+  display: grid;
+  gap: 0.05rem;
+  min-width: 0;
+}
+
+.song-card__label {
+  font-family: var(--hand);
+  font-size: 1.15rem;
+  line-height: 1;
+  color: var(--maroon);
+}
+
+.song-card__title {
+  font-family: var(--serif);
+  font-size: 1.16rem;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.song-card__artist {
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.song-card__play {
+  margin-left: auto;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.75rem;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid var(--burgundy);
+  border-radius: 999px;
+  background: var(--burgundy);
+  color: var(--ivory);
+  font-family: var(--sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.35s var(--ease), color 0.35s var(--ease),
+    transform 0.35s var(--ease);
+}
+
+.song-card__play:hover {
+  background: var(--wine);
+  transform: translateY(-1px);
+}
+
+.song-card.is-playing .song-card__play {
+  background: transparent;
+  color: var(--burgundy);
+}
+
+.song-card.is-playing .song-card__play:hover {
+  background: var(--blush-wash);
+}
+
+.song-card__play-icon svg,
+.music-dock__toggle svg {
+  display: block;
+  width: 0.8rem;
+  height: 0.8rem;
+}
+
+.song-card__hint {
+  margin: 0.5rem 0 0 0.2rem;
+  max-width: 25rem;
+  font-family: var(--sans);
+  font-size: 0.66rem;
+  line-height: 1.5;
+  color: var(--ink-faint);
+  overflow-wrap: anywhere;
+}
+
+.song-card__play:focus-visible,
+.music-dock__toggle:focus-visible {
+  outline: 2px solid var(--maroon);
+  outline-offset: 3px;
+}
+
+.song-card__art,
+.music-dock__art {
+  flex: none;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 2px;
+  object-fit: cover;
+  transform: rotate(-2deg);
+  box-shadow: 0 2px 7px -3px rgba(74, 20, 38, 0.65),
+    0 0 0 1px rgba(74, 20, 38, 0.12);
+  transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+}
+
+.song-card.is-playing .song-card__art {
+  transform: rotate(0deg);
+  box-shadow: 0 4px 12px -4px rgba(74, 20, 38, 0.6),
+    0 0 0 1px rgba(109, 31, 53, 0.22);
+}
+
+.music-dock__art {
+  width: 1.9rem;
+  height: 1.9rem;
+  transform: none;
+}
+
+.song-card.is-playing .song-card__disc,
+.music-dock.is-playing .music-dock__disc {
+  animation: song-spin 4.4s linear infinite;
+}
+
+@keyframes song-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+/* The little player that stays with her as she scrolls. */
+.music-dock {
+  position: fixed;
+  left: clamp(0.9rem, 3vw, 1.6rem);
+  bottom: clamp(0.9rem, 3vw, 1.6rem);
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  max-width: min(18rem, calc(100vw - 5.4rem));
+  padding: 0.3rem 0.3rem 0.3rem 0.4rem;
+  background: rgba(255, 252, 247, 0.95);
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  box-shadow: var(--shadow-md);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.music-dock[hidden] {
+  display: none;
+}
+
+.music-dock__disc {
+  width: 1.85rem;
+  height: 1.85rem;
+}
+
+.music-dock__text {
+  display: grid;
+  min-width: 0;
+}
+
+.music-dock__title {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  line-height: 1.15;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-dock__artist {
+  font-family: var(--sans);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.music-dock__toggle {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--burgundy);
+  color: var(--ivory);
+  cursor: pointer;
+  transition: background-color 0.3s var(--ease);
+}
+
+.music-dock__toggle:hover {
+  background: var(--wine);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .song-card.is-playing .song-card__disc,
+  .music-dock.is-playing .music-dock__disc {
+    animation: none;
+  }
+}
